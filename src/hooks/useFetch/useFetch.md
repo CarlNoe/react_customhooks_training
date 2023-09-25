@@ -33,3 +33,8 @@ Your hook should be usable in the following manner:
 ```typescript
 const { data, loading, error } = useFetch("https://api.example.com/items");
 ```
+
+### Bonus Points
+1. Add JSDoc comments to describe the function, parameters, and return values.
+2. Write unit tests to validate your hook's functionality.
+3. Allow the hook to refetch data based on some trigger or condition.
