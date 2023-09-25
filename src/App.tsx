@@ -1,21 +1,11 @@
-import { useState, useEffect } from "react";
-import { useDebounce } from "./hooks/useDebounce/useDebounce";
+import Debounce from "./hooks/useDebounce/Debounce";
+import Fetch from "./hooks/useFetch/Fetch";
 
 function App() {
-  const [value, setValue] = useState("");
-  const debouncedValue = useDebounce(value, 500);
-
-  useEffect(() => {
-    console.log("debouncedValue", debouncedValue);
-  }, [debouncedValue]);
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
   return (
-    <div>
-      <input aria-label="DEBOUNCE HOOK" placeholder="DEBOUNCE HOOK" onChange={handleOnChange} />
+    <div style={{ padding: "15px", display: "flex", flexWrap: "wrap" }}>
+      <Debounce />
+      <Fetch />
     </div>
   );
 }
