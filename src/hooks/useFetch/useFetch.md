@@ -1,40 +1,53 @@
-## Exercise: Create a `useFetch` React Hook
+# Exercise: Create an Advanced `useFetch` React Hook
 
-### Objective
-The goal of this exercise is to create a custom React hook named `useFetch` that will make it easier to fetch data from APIs in your React components.
+## Objective
+Create a custom React hook named `useFetch` to simplify API fetching in your React components. Go beyond the basics to include advanced functionalities like refetching data based on conditions or triggers.
 
-### Parameters
+## Parameters
+- `url` (`string`): The URL from which data will be fetched.
+- `options` (`RequestInit` | `null`): An optional object for customizing the fetch request settings, like method, headers, etc.
 
-- **url (`string`)**: The URL from which data needs to be fetched.
-- **options (`RequestInit`)**: An optional object that allows you to control various settings of the fetch request (e.g., method, headers).
+## Return Values
+- `data` (`any`): The fetched data. Should be `null` if data hasn't been fetched yet.
+- `loading` (`boolean`): Whether data is currently being fetched.
+- `error` (`Error | null`): An Error object if fetching fails, otherwise `null`.
+- `refetch` (`Function`): A function to refetch data manually.
 
-### Return Values
+## Guidelines
 
-- **data (`any`)**: The data retrieved from the API. This will be `null` if the data is not yet fetched.
-- **loading (`boolean`)**: Indicates whether the data is currently being fetched.
-- **error (`Error | null`)**: An Error object if the fetch fails, otherwise `null`.
+### TypeScript
+- Implement TypeScript for strong typing of parameters, return values, and internal variables.
 
-### Guidelines
-
-1. **TypeScript**: Use TypeScript to enforce types on the parameters, return values, and inside the hook. This will make the code more robust.
+### React Hooks
+- Use `useState` and `useEffect` for state and side-effects management.
   
-2. **React Hooks**: Utilize React's `useState` and `useEffect` hooks to manage state and side-effects.
-  
-3. **Fetch API**: Use JavaScript's native `fetch` API to handle the HTTP request.
+### Fetch API
+- Leverage JavaScript's native fetch API for HTTP requests.
 
-4. **Loading State**: The hook should maintain a loading state that indicates whether data is being fetched.
+### Loading State
+- Include a loading state to indicate if data is being fetched.
 
-5. **Error Handling**: The hook should be capable of catching and returning errors if the fetch operation fails.
+### Error Handling
+- Implement robust error handling to catch and return errors if the fetch operation fails.
 
-### Example Usage
+### Refetching Data
+- Allow the hook to refetch data manually or based on some condition.
 
-Your hook should be usable in the following manner:
+## Example Usage
 
-```typescript
-const { data, loading, error } = useFetch("https://api.example.com/items");
+```tsx
+const { data, loading, error, refetch } = useFetch("https://api.example.com/items", null);
+// To refetch data
+refetch();
 ```
 
-### Bonus Points
-1. Add JSDoc comments to describe the function, parameters, and return values.
-2. Write unit tests to validate your hook's functionality.
-3. Allow the hook to refetch data based on some trigger or condition.
+## Bonus
+
+### JSDoc Comments
+- Add JSDoc comments for function, parameters, and return values.
+
+### Unit Tests
+- Write unit tests to validate your hook's functionality, including edge cases for loading, error, and refetch scenarios.
+
+### Caching Mechanism (Optional)
+- Introduce a simple caching mechanism to avoid redundant API calls.
